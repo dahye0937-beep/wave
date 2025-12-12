@@ -1,0 +1,81 @@
+#comus-page{
+    /* footer가 보이게 하기 위해서는 height값 설정 */
+    height: auto;
+    .page-view{
+        /* 실제 높이 처리 */
+        height: 100vh;
+        overflow: hidden;
+        .page-list{
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+        }
+    }
+}
+/* 각각페이지 설정 */
+.page{
+    padding: 10rem;
+    flex: 0 0 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 5rem;
+    .left{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .top{
+            p:nth-child(1){
+                color: #999;
+                line-height: 1.5;
+                 /* \n을 인식해서 줄바꿈 처리를 해라. */
+                white-space: pre-wrap;
+            }
+            p:nth-child(2){
+                margin-top: 2rem;
+                font-weight: bolder;
+            }
+        }
+        .bottom{
+            p{
+                color: dodgerblue;
+                font-weight: bolder;
+                font-size: 2rem;
+            }
+            h2{
+                margin: 1rem 0;
+                font-size: 4rem;
+            }
+        }
+    }
+    img{
+        width: 50%;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+    }
+}
+@media all and (max-width:768px) {
+    #comus-page{
+        .page-view{
+            height: auto;
+            .page-list{
+                flex-direction: column;
+            }
+        }
+    }
+    .page{
+        padding: 5rem;
+        flex-direction: column-reverse;
+        .left{
+            flex-direction: column-reverse;
+        }
+        .left{
+            width: 100%;
+        }
+        img{
+            width: 100%;
+        }
+    }
+}

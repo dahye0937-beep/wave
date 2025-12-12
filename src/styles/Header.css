@@ -1,0 +1,202 @@
+header{
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    background-color: #fff;
+}
+.logo{
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+nav{
+    &::before{
+        content: '';
+        position: absolute;
+        top: calc(100px - 2px);
+        left: 0;
+        width: 100vw;
+        /* height: 300px; */
+        height: 0;
+        background-color: #fff;
+        border-top: 2px solid transparent;
+        transition: 0.3s;
+    }
+    > ul{
+        display: flex;
+        flex-direction: row;
+        .main-menu{
+            padding: 2rem 1rem;
+            flex: 0 0 130px;
+            font-size: 1.1rem;
+            position: relative;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+            text-align: center;
+            &:has(.sub-menu):hover{
+                border-bottom: 2px solid #2b5bf3;
+            }
+            /* &:hover{
+                border-bottom: 2px solid #2b5bf3;
+            } */
+            &:hover > .sub-menu{
+                background-color: #e0eafd;
+            }
+            .sub-menu{
+                padding: 0.5rem;
+                font-size: 0.8rem;
+                opacity: 0;
+                position: absolute;
+                width: 100%;
+                height: 0;
+                overflow: hidden;
+                top: calc(100% + 2px);
+                left: 0;
+                text-align: left;
+                background-color: #fff;
+                transition: 0.3s;
+                li{
+                    padding: 0.5rem 0;
+                    &:hover > a{
+                        color: #2b5bf3;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* select-lang */
+.select-lang{
+    select{
+        border: none;
+        outline: none;
+        background-color: none;
+        option{
+            background-color: #fff;
+        }
+    }
+}
+
+/* 햄버거 메뉴처리 */
+.hamburger{
+    display: none;
+}
+/* 데스크탑 처리 */
+@media all and (min-width:769px) {
+    /* 메인메뉴에 마우스를 올렸을 때 
+        sub-manu가 있으면 서브 메뉴 보이기 */
+    nav:has(.main-menu:hover .sub-menu) .sub-menu{
+        height: 300px;
+        opacity: 1;
+    }
+    nav:has(.main-menu:hover .sub-menu)::before{
+        height: 300px;
+        border-top: 2px solid #ddd;
+    }
+}
+
+/* 모바일 처리 */
+@media all and (max-width:768px) {
+    header{
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+    /* 햄버거 버튼 지정 */
+    .hamburger{
+        background: none;
+        cursor: pointer;
+        display: block;
+        width: 25px;
+        height: 18px;
+        position: relative;
+        border: none;
+        outline: none;
+        span{
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #222;
+            position: absolute;
+            left: 0;
+            transition: 0.3s;
+            &:nth-child(1){
+                top: 0;
+            }
+            &:nth-child(2){
+                top: 49%;
+            }
+            &:nth-child(3){
+                top: 100%;
+            }
+        }
+    }
+    .hamburger.active span:nth-child(1){
+        top: 50%;
+        transform: rotate(45deg);
+    }
+    .hamburger.active span:nth-child(2){
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3){
+        top: 50%;
+        transform: rotate(-45deg);
+    }
+    /***************/
+    .select-lang{
+        display: none;
+    }
+    /* nav 영역이 모바일 일 경우 */
+    nav.active{
+        left: 0;
+    }
+    nav{
+        position: fixed;
+        top: 100px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 100px);
+        background-color: #fff;
+        padding: 0 2rem;
+        transition: 0.3s;
+        &::before{
+            display: none;
+        }
+        >ul{
+            flex-direction: column;
+            .main-menu{
+                flex: 0 0 auto; /* 너비고정해제*/
+                width: 100%;
+                padding: 0;
+                text-align: left;
+                border-bottom: none;
+                /* &:hover > .sub-menu{
+                    background-color: #fff;
+                } */
+                &:has(.sub-menu):hover{
+                border-bottom: none;
+            }
+            &.active{ 
+                .sub-menu{
+                    opacity: 1;
+                    height: auto;
+                }
+            }
+                .sub-menu{
+                    opacity: 0;
+                    position: static;
+                    height: 0;
+                    li{
+                    }
+                }
+            }
+        }
+    }
+}

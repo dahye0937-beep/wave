@@ -1,0 +1,23 @@
+#marquee{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 10;
+    padding-right: 4rem;
+    /* 컨텐츠 사이즈에 맞춰 width를 재설정 */
+    width: max-content;
+    ul{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 4rem;
+        li{
+            flex: 1;
+            padding: 2rem;
+            border-radius: 4rem;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            box-shadow: 2px 2px 20px #ccc;
+        }
+    }
+}

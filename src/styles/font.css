@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+body{
+    font-family: 'Pretendard';
+}
+/* PC(기본 */
+html{
+    font-size: 16px;
+}
+/* 태블릿 이하일 때 */
+@media all and (max-width: 768px) {
+    html{
+        font-size: 12px;
+    }
+}
