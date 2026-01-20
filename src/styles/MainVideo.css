@@ -32,7 +32,7 @@
 }
 
 /* 모바일 */
-@media all and(max-width:768px) {
+@media all and (max-width:768px) {
     #main-video{
         .video-wrap{
             width: 80%;

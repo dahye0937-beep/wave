@@ -1,7 +1,6 @@
 import "../styles/Marquee.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 const Marquee = () => {
     //기본아이템 8개의 이름을 배열로 만들어서 처리
